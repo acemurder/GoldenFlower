@@ -183,7 +183,7 @@ public class Manager {
         Collections.sort(handCards);
         int value = 0;
         if (isPair(handCards)) {
-            if (handCards.get(0).getPoint().num == handCards.get(0).getPoint().num)
+            if (handCards.get(0).getPoint().num == handCards.get(1).getPoint().num)
                 value += handCards.get(0).getPoint().num * 10000
                         + handCards.get(0).getPoint().num * 100
                         + handCards.get(2).getPoint().num;
