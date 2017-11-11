@@ -16,7 +16,7 @@
 
 ## 怎么玩
 从这里fork一份到自己的github ，clone到本地      
-在player包里添加自己的Player类,类名为“你的英文名＋Prisoner”， 实现Player接口，完善信息，并实现你的算法    
+在player包里添加自己的Player类,类名为“你的英文名＋Player”， 实现Player接口，完善信息，并实现你的算法    
 其他的代码，一行都不要改动      
 然后提交pull request。注意只提交自己添加的类。   
 
