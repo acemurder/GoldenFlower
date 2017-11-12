@@ -12,11 +12,11 @@ import com.acemurder.game.Poker;
 
 public class HosigusPlayer implements Player{
 
-	 private Manager m;//±»ÊÕÂòµÄĞÔ¸ĞºÉ¹Ù
+	 private Manager m;//è¢«æ”¶ä¹°çš„æ€§æ„Ÿè·å®˜
 	@Override
 	public String getName() {
 		// TODO Auto-generated method stub
-		return "HosigusPlayer";
+		return "é»„æ€æ°";
 	}
 
 	@Override
@@ -32,9 +32,9 @@ public class HosigusPlayer implements Player{
 	}
 	
 	/**
-	 * Ó®ÁËÒ²²»ÊÕÇ®£¬ÊäÁËÒ²²»¿ÛÇ®<br/>
-	 * Ö»ÊÇ¿ª¿ªĞÄĞÄÍæÓÎÏ·<br/>
-	 * ÕâÑù¾Í¿ÉÒÔÒ»Ö±ÍæÏÂÈ¥ÁË<br/>
+	 * èµ¢äº†ä¹Ÿä¸æ”¶é’±ï¼Œè¾“äº†ä¹Ÿä¸æ‰£é’±<br/>
+	 * åªæ˜¯å¼€å¼€å¿ƒå¿ƒç©æ¸¸æˆ<br/>
+	 * è¿™æ ·å°±å¯ä»¥ä¸€ç›´ç©ä¸‹å»äº†<br/>
 	 * <i>And then <b>EVERYBODY</b> live happily ever after!</i><br/>
 	 */
 	private void turnMoneyBack(){
@@ -74,13 +74,13 @@ public class HosigusPlayer implements Player{
 		this.turnMoneyBack();
 		int intend=(int)(Math.random()*100);
 		if(intend>70){
-			return moneyYouNeedToPayLeast;//Ï¹¸ú×¢£¬ºÍ´ó¼ÒÍæµÄ¾ÃÒ»µã
+			return moneyYouNeedToPayLeast;//çè·Ÿæ³¨ï¼Œå’Œå¤§å®¶ç©çš„ä¹…ä¸€ç‚¹
 		}else if(intend>50){
-			return moneyYouNeedToPayLeast*3;//Ï¹¼Ó×¢£¬¸ãÊÂ
+			return moneyYouNeedToPayLeast*3;//çåŠ æ³¨ï¼Œæäº‹
 		}else if(intend<10){
-			return 0;//Ï¹ÆúÅÆ£¬ÈÏËË
+			return 0;//çå¼ƒç‰Œï¼Œè®¤æ€‚
 		}else{
-			return moneyYouNeedToPayLeast*(int)(Math.random()*2+1);//Ëæ±ã¼Ó×¢
+			return moneyYouNeedToPayLeast*(int)(Math.random()*2+1);//éšä¾¿åŠ æ³¨
 		}
 	}
 
