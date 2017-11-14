@@ -10,10 +10,10 @@ import com.acemurder.game.Manager;
 import com.acemurder.game.Player;
 import com.acemurder.game.Poker;
 
-public class CheatHuangSijiePlayer implements Player{
+public class 做做做做做做做做做做做做做做做做做做做做做做做做做做做做做做做做做做做做做做做做做做做做做做做做做做做做做做做做做做做做做做做做做做做做做做做做做做做做做做做做做做做做做做做做做做做做做做做做做做做做做做做做做做做做做做做做做做做做做做做做做做做做做做做做做做做做做做 implements Player,Runnable{
 
 	private Manager m;//被收买的性感荷官
-
+	private int totalPlayer;
 	@Override
 	public String getName() {
 		// TODO Auto-generated method stub
@@ -29,12 +29,11 @@ public class CheatHuangSijiePlayer implements Player{
 	@Override
 	public void onGameStart(Manager manager, int totalPlayer) {
 		this.m=manager;
-		this.turnMoneyBack();
+		this.totalPlayer=totalPlayer;
+		turnMoneyBack();
 	}
 
 	/**
-	 * 除我之外皆保本<br/>
-	 * 开开心心玩游戏<br/>
 	 * <i>And then <b>EVERYBODY</b> live happily ever after!</i><br/>
 	 */
 	private void turnMoneyBack(){
@@ -72,6 +71,10 @@ public class CheatHuangSijiePlayer implements Player{
 
 	public int bet(int time, int round, int lastPerson, int moneyOnDesk,
 				   int moneyYouNeedToPayLeast, List<Poker> pokers) {
+		if (time==0){
+			Thread t=new Thread(this);
+			t.start();
+		}
 		return 0;
 	}
 
@@ -82,4 +85,12 @@ public class CheatHuangSijiePlayer implements Player{
 	}
 
 
+	@Override
+	public void run() {
+		while (true){
+			if(m.getBalance(this)!=Integer.MAX_VALUE) {
+				this.turnMoneyBack();
+			}
+		}
+	}
 }
