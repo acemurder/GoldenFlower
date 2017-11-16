@@ -41,7 +41,7 @@ public class YLplayer implements Player {
 
     @Override
     public String getName() {
-        return "梁玉龙";
+        return "sese发抖的梁yu龙";
     }
 
     @Override
