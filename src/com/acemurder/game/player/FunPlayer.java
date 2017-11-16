@@ -44,7 +44,7 @@ public class FunPlayer implements Player {
 
     @Override
     public String getName() {
-        return "大手子";
+        return "菜手子";
     }
 
     @Override
