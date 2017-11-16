@@ -11,6 +11,7 @@ public class terriblechickPlayer implements Player {
     }
     @Override
     public int bet(int time, int round, int lastPerson, int moneyOnDesk, int moneyYouNeedToPayLeast, List<Poker> pokers) {
+
         Collections.sort(pokers);
         if (isSameColor(pokers) )
             return (int) ((2 +(round / 10f)) * moneyYouNeedToPayLeast) < 3 * moneyOnDesk ? (int) ((2 +(round / 10f)) * moneyYouNeedToPayLeast)  : 3 * moneyOnDesk -1;
