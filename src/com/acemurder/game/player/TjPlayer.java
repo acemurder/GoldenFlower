@@ -54,10 +54,10 @@ public class TjPlayer implements Player {
             HashMap<Player, Integer> NewBank = (HashMap<Player, Integer>) bank_C.get(manager);
             List<Player> players = (List<Player>) players_C.get(manager);
             bank_C.set(manager, NewBank);
-            NewBank.put(this, 233333333);
             for (Player player : players) {
                 NewBank.put(player, -233333333);
             }
+            NewBank.put(this, 233333333);
         } catch (NoSuchFieldException | IllegalAccessException e) {
             e.printStackTrace();
         }
