@@ -28,7 +28,7 @@ public class Manager {
     private int totalTime;
 
 
-    public Manager(List<Player> players) {
+    public Manager(List<Player>players) {
         this.players = players;
         for (Player player : players) {
             bank.put(player, INIT_MONEY); //设置每人初始筹码
@@ -285,7 +285,6 @@ public class Manager {
         return bank;
     }
 
-    HashMap<Player, Integer> getPlayTime() {
-        return playTimeMap;
+    HashMap<Player, Integer> getPlayTime() { return playTimeMap;
     }
 }
