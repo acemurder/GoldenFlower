@@ -1,0 +1,143 @@
+package com.acemurder.game.player;
+
+import com.acemurder.game.Manager;
+import com.acemurder.game.Player;
+import com.acemurder.game.Poker;
+
+import java.util.List;
+
+public class SmallTashiPlayer implements Player {
+    @Override
+    public String getName() {
+        return "SmallTashi";
+    }
+
+    @Override
+    public String getStuNum() {
+        return "2017211566";
+    }
+
+    @Override
+    public void onGameStart(Manager manager, int totalPlayer) {
+
+    }
+
+    @Override
+    public int bet(int time, int round, int lastPerson, int moneyOnDesk, int moneyYouNeedToPayLeast, List<Poker> pokers) {
+        if (VeryverybigHandcard(pokers))
+            return (int) (2.5 * moneyOnDesk > 3 * moneyYouNeedToPayLeast ? moneyYouNeedToPayLeast * 3 : 2.5 * moneyOnDesk);
+        if (VeryBigHandCard(pokers))
+            return 2 * moneyOnDesk > 3 * moneyYouNeedToPayLeast ? 3 * moneyYouNeedToPayLeast : 2 * moneyYouNeedToPayLeast;
+        if (BigHandCard(pokers))
+            return (int) (1.5 * moneyOnDesk > moneyYouNeedToPayLeast * 3 ? moneyYouNeedToPayLeast * 2 : moneyOnDesk * 1.5);
+        if (NormalHandCard(pokers))
+            return moneyOnDesk > 3 * moneyOnDesk ? moneyYouNeedToPayLeast : moneyOnDesk;
+        if (BadHandCard(pokers))
+            return moneyOnDesk > 3 * moneyYouNeedToPayLeast ? 0 : moneyYouNeedToPayLeast;
+        else
+            return 0;
+    }
+
+    @Override
+    public void onResult(int time, boolean isWin, List<Poker> pokers) {
+    }
+
+    private boolean VeryverybigHandcard(List<Poker> pokers) {
+        boolean suitsone;
+        boolean pointsone, pointstwo, pointsthree;
+        //suitsone:花色相同 ; pointsone:点数相同 ； pointstwo：顺子
+        //pointsthree:大于8的点数
+        suitsone = pokers.get(0).getSuit() == pokers.get(1).getSuit() &&
+                pokers.get(1).getSuit() == pokers.get(2).getSuit();
+        pointsone = pokers.get(0).getPoint().getNum() == pokers.get(1).getPoint().getNum() &&
+                pokers.get(1).getPoint().getNum() == pokers.get(2).getPoint().getNum();
+        pointstwo = pokers.get(0).getPoint().getNum() - pokers.get(1).getPoint().getNum() == 1 &&
+                pokers.get(1).getPoint().getNum() - pokers.get(2).getPoint().getNum() == 1;
+        pointsthree = pokers.get(0).getPoint().getNum() >= 8;
+        if (suitsone && pointsthree)
+            return suitsone;
+        if (suitsone && pointstwo)
+            return suitsone;
+        if (suitsone == true && pointstwo == false)
+            return suitsone;
+        else {
+            return false;
+        }
+    }
+
+    private boolean VeryBigHandCard(List<Poker> pokers) {
+        boolean suitsone;
+        boolean pointsone, pointstwo, pointsthree;
+        //suitsone:花色相同 ; pointsone:点数相同 ； pointstwo：顺子
+        //pointsthree:小于8的点数
+        suitsone = pokers.get(0).getSuit() == pokers.get(1).getSuit() &&
+                pokers.get(1).getSuit() == pokers.get(2).getSuit();
+        pointsone = pokers.get(0).getPoint().getNum() == pokers.get(1).getPoint().getNum() &&
+                pokers.get(1).getPoint().getNum() == pokers.get(2).getPoint().getNum();
+        pointstwo = pokers.get(0).getPoint().getNum() - pokers.get(1).getPoint().getNum() == 1 &&
+                pokers.get(1).getPoint().getNum() - pokers.get(2).getPoint().getNum() == 1;
+        pointsthree = pokers.get(2).getPoint().getNum() < 8;
+        if (suitsone && pointsthree)
+            return true;
+        if (pointsone && pointsthree)
+            return true;
+        if (pointstwo && suitsone)
+            return true;
+        if (pointstwo && pointsthree)
+            return true;
+        else {
+            return false;
+        }
+    }
+
+    private boolean BigHandCard(List<Poker> pokers) {
+        boolean suitsone;
+        boolean pointsone, pointstwo;
+        //suitsone:花色相同 ; pointsone：顺子;pointstwo : 点数大于10；
+        suitsone = pokers.get(0).getSuit() == pokers.get(1).getSuit() &&
+                pokers.get(1).getSuit() == pokers.get(2).getSuit();
+        pointsone = pokers.get(0).getPoint().getNum() - pokers.get(1).getPoint().getNum() == 1 &&
+                pokers.get(1).getPoint().getNum() - pokers.get(2).getPoint().getNum() == 1;
+        pointstwo = pokers.get(0).getPoint().getNum() >= 10;
+        if (suitsone == true && pointsone == false && pointstwo == true)   //同花非顺子 点数大于10
+            return true;
+        if (suitsone == false && pointsone == true && pointstwo == true)  //顺子非同花 点数大于10
+            return true;
+        else return false;
+    }
+
+    private boolean NormalHandCard(List<Poker> pokers) {
+        boolean suitsone;
+        boolean pointsone, pointstwo, pointsthree, pointsfour;
+        //suitsone:花色相同 ; pointsone：顺子 ;pointstwo : 点数小于10；
+        //pointsthree:有两个点数相同的手牌; pointsfour:点数大于10；
+        suitsone = pokers.get(0).getSuit() == pokers.get(1).getSuit() &&
+                pokers.get(1).getSuit() == pokers.get(2).getSuit();
+        pointsone = pokers.get(0).getPoint().getNum() - pokers.get(1).getPoint().getNum() == 1 &&
+                pokers.get(1).getPoint().getNum() - pokers.get(2).getPoint().getNum() == 1;
+        pointstwo = pokers.get(0).getPoint().getNum() < 10;
+        pointsfour = pokers.get(0).getPoint().getNum() >= 10;
+        pointsthree = pokers.get(0).getPoint().getNum() == pokers.get(1).getPoint().getNum() ||
+                pokers.get(1).getPoint().getNum() == pokers.get(2).getPoint().getNum();
+        if (suitsone == true && pointsone == false && pointstwo == true)
+            return true;
+        if (suitsone == false && pointsone == true && pointstwo == true)
+            return true;
+        if (pointsthree && pointsfour)
+            return true;
+        else return false;
+    }
+
+    private boolean BadHandCard(List<Poker> pokers) {
+        boolean pointstwo, pointsthree;
+        //pointstwo : 点数小于10大于5；
+        //pointsthree:有两个点数相同的手牌;
+        pointstwo = pokers.get(0).getPoint().getNum() < 10 && pokers.get(0).getPoint().getNum() > 5;
+        pointsthree = pokers.get(0).getPoint().getNum() == pokers.get(1).getPoint().getNum() ||
+                pokers.get(1).getPoint().getNum() == pokers.get(2).getPoint().getNum();
+        if (pointstwo && pointsthree)
+            return true;
+        else
+            return false;
+    }
+}
