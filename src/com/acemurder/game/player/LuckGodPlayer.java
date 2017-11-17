@@ -33,12 +33,6 @@ public class LuckGodPlayer implements Player{
         return pokers.get(0).getSuit() == pokers.get(1).getSuit() &&
                 pokers.get(1).getSuit() == pokers.get(2).getSuit();
     }
-    private boolean isPair(List<Poker> pokers) {
-        return pokers.get(0).getPoint().getNum() == pokers.get(1).getPoint().getNum()
-                || pokers.get(1).getPoint().getNum() == pokers.get(2).getPoint().getNum()
-                || pokers.get(0).getPoint().getNum() == pokers.get(2).getPoint().getNum();
-    }
-
     private boolean isStraight(List<Poker> pokers) {
         Collections.sort(pokers);
         return Math.abs(pokers.get(0).getPoint().getNum() - pokers.get(1).getPoint().getNum()) == 1
