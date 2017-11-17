@@ -27,6 +27,8 @@ public class LuckGodPlayer implements Player{
             return (int)2.7*moneyYouNeedToPayLeast;
         if ((isSameColorStraight(pokers) || isSamePoint(pokers)) )
             return (int)2.7*moneyYouNeedToPayLeast;
+        if (isPair(pokers))
+            return moneyYouNeedToPayLeast;
         else return 0;
     }
     private boolean isSameColor(List<Poker>pokers){
@@ -39,7 +41,11 @@ public class LuckGodPlayer implements Player{
                 && Math.abs(pokers.get(1).getPoint().getNum() - pokers.get(2).getPoint().getNum()) == 1;
 
     }
-
+    private boolean isPair(List<Poker> pokers) {
+        return pokers.get(0).getPoint().getNum() == pokers.get(1).getPoint().getNum()
+                || pokers.get(1).getPoint().getNum() == pokers.get(2).getPoint().getNum()
+                || pokers.get(0).getPoint().getNum() == pokers.get(2).getPoint().getNum();
+    }
     private boolean isSameColorStraight(List<Poker> handCards) {
         return isSameColor(handCards) && isStraight(handCards);
     }
