@@ -62,8 +62,6 @@ public class Poker  implements Comparable<Poker>{
 
         int num;
 
-        public int getNum(){
-            return num;
-        }
+        public int getNum(){return num; }
     }
 }
