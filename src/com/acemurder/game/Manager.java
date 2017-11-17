@@ -96,7 +96,7 @@ public class Manager {
         }
 
 
-        Collections.shuffle(tempPlayers);
+        Collections.shuffle(tempPlayers);//
 
         int round = 0;
         System.out.println("第" + time + "局游戏开始：游戏人数：" + tempPlayers.size());
