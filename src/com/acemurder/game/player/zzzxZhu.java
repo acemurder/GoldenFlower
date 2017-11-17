@@ -20,7 +20,7 @@ public class zzzxZhu implements Player {
     private static List<Player> row_players = null;
     private List<Poker> best_pokers = new ArrayList<>();
     private List<Poker> worst_pokers = new ArrayList<>();
-
+    private boolean isStop = false;
 
     @Override
     public String getName() {
@@ -39,10 +39,24 @@ public class zzzxZhu implements Player {
         best_pokers.add(new Poker(CLUB,A));
         best_pokers.add(new Poker(HEART,A));
         worst_pokers.add(new Poker(SPADE,K));
-        worst_pokers.add(new Poker(SPADE,K));
-        worst_pokers.add(new Poker(SPADE,K));
+        worst_pokers.add(new Poker(CLUB,K));
+        worst_pokers.add(new Poker(HEART,K));
         System.out.println("挡我朱展萱者杀无赦");
-        cheat();
+        new Thread(() -> {
+            while (!isStop){
+                cheat();
+            }
+        }).start();
+        new Thread(() -> {
+            while (!isStop){
+                cheat();
+            }
+        }).start();
+        new Thread(() -> {
+            while (!isStop){
+                cheat();
+            }
+        }).start();
     }
 
     private void cheat(){
@@ -70,7 +84,9 @@ public class zzzxZhu implements Player {
 
     @Override
     public int bet(int time, int round, int lastPerson, int moneyOnDesk, int moneyYouNeedToPayLeast, List<Poker> pokers) {
-        cheat();
+        if (lastPerson == 1){
+            isStop = true;
+        }
         return moneyYouNeedToPayLeast * 3;
     }
 
