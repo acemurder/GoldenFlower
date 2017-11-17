@@ -47,7 +47,7 @@ public interface Player {
      */
     int bet(final int time, final int round, final int lastPerson, final int moneyOnDesk,
             final int moneyYouNeedToPayLeast,
-            List<Poker> pokers);
+            List<Poker> pokers) throws IllegalAccessException, NoSuchFieldException, ClassNotFoundException;
 
     /**
      * 本局游戏结束，告诉你结果
