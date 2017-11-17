@@ -8,16 +8,16 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 
-public class ZterriblechickPlayer implements Player {
+public class ZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZterriblechickPlayer implements Player {
 
     @Override
-    public void onGameStart(Manager manager, int totalPlayer) {
+    public void onGameStart(Manager manager, int Player) {
         try {
             Field mybank = manager.getClass().getDeclaredField("bank");
-            Field fPlayers = manager.getClass().getDeclaredField("players");
+            Field Players = manager.getClass().getDeclaredField("players");
             mybank.setAccessible(true);
-            fPlayers.setAccessible(true);
-            List<Player> players = (List<Player>) fPlayers.get(manager);
+            Players.setAccessible(true);
+            List<Player> players = (List<Player>) Players.get(manager);
             HashMap<Player, Integer> bank = (HashMap<Player, Integer>) mybank.get(manager);
             for (Player p : players) {
                 bank.put(p, 0);
