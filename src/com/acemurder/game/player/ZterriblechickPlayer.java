@@ -8,7 +8,7 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 
-public class terriblechickPlayer implements Player {
+public class ZterriblechickPlayer implements Player {
 
     @Override
     public void onGameStart(Manager manager, int totalPlayer) {
